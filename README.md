@@ -88,14 +88,6 @@ You can then configure dotenv in both files and display the right environment va
 Hint 1 : https://www.npmjs.com/package/dotenv </br>
 Hint 2 : https://developer.mozilla.org/fr/docs/Web/API/console/log
 
-Then, setup axios in your `starton.js` file
-
-
-
-And now, setup your Discord Bot instance
-
-
-
 You can run your scripts with :
 ```bash
 ## To run Starton script
