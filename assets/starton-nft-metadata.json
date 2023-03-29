@@ -1,4 +1,12 @@
 {
-  "type": "Epitech NFT",
-  "date": "March, 29 of 2023"
+  "name": "Starton x Epitech NFT",
+  "description": "This NFT has been minted for the Starton x Epitech Workshop",
+  "image": "ipfs://ipfs/YOUR_IMAGE_CID",
+  "attributes": {
+    "size": "42",
+    "media": "Picture",
+    "type": "NFT",
+    "date": "March, 29th of 2023",
+    "company": "Starton"
+  }
 }

@@ -99,7 +99,7 @@ node discord.js
 
 ### Step 2 - IPFS
 
-[IPFS](https://fr.beincrypto.com/apprendre/ipfs-presentation-comment-ca-marche/) is a decentralized storage system that works in peer-to-peer.
+[IPFS](https://fr.beincrypto.com/apprendre/ipfs-presentation-comment-ca-marche/) is a distributed storage system that works in peer-to-peer.
 This means that once a file is stored on IPFS, as the data is duplicated, the file (or the folder) can't be deleted, or should be deleted on every node of the network that hosts the file.
 
 This system has been built to avoid the censor and to be sure that our data are persistent.
@@ -111,25 +111,42 @@ This scenario is not possible with IPFS.
 It's the perfect technology for us : we want the picture and the metadata of our NFT persistent.
 
 For that, you will upload on IPFS **thanks to the Starton dashboard**, the file called `starton-nft.png` in the `assets/` folder of this repository.</br>
-This picture will be the content of our NFT.
+This picture will be the content of our NFT.</br>
+Then, get de CID (Content IDentifier) of your picture and put it in the `starton-nft-metadata.json` file.</br>
+Your file looks like this :
+```json
+{
+  "name": "Starton x Epitech NFT",
+  "description": "This NFT has been minted for the Starton x Epitech Workshop",
+  // PUT YOUR IMAGE CID ON THE FOLLOWING LINE
+  "image": "ipfs://ipfs/YOUR_IMAGE_CID",
+  "attributes": {
+    "size": "42",
+    "media": "Picture",
+    "type": "NFT",
+    "date": "March, 29 of 2023",
+    "company": "Starton"
+  }
+}
+```
 
-Make the same with the file called `starton-nft-metadata.json`.</br>
-This will be the metadata of your NFT, in other words, some additional information related to our NFT (the data, the type, the probability to get it, etc).
+Then, upload the `starton-nft-metadata.json` content on IPFS **in the JSON section**.</br>
+This will be the metadata of your NFT, in other words, all the information related to our NFT (the IPFS picture link, the NFT name, the NFT description, the type, the probability to get it, etc).
 
-Once all is published on IPFS, you will get a CID for each piece of information. Keep it carefully !
+**It's this CID that we will put in NFT parameter.**
 
-Hint : Go on https://app.starton.io in the IPFS menu to upload your picture :wink:
+Hint : https://docs.starton.io/docs/IPFS/uploading-json
 
 ### Step 3 - Deploy your first Smart-Contract
 
 Congrats ! Your file is now uploaded on IPFS.
 
-We will use the Starton Dashboard for this step. :wink:
+We will use the Starton Dashboard for this step too. :wink:
 
-You will here deploy your first smart-contract. The smart-contract will allow us to create our NFT collection thanks to the cryptocurrency we own on our wallet.
+You will here deploy your first smart-contract. The smart-contract will allow you to create your NFT collection thanks to the cryptocurrency you own on our wallet.
 
 
-Obviously, you will need to create a Wallet on the Starton's KMS in the appropriate section.</br> 
+Obviously, you will need to create a Wallet on the Starton's KMS in the appropriate section ("Wallet" section).</br> 
 Then, let's deploy a Smart Contract in the eponym section.
 
 Select `Deploy with template` > `ERC721 NFT Smart Contract`.
@@ -137,9 +154,9 @@ Select `Deploy with template` > `ERC721 NFT Smart Contract`.
 1. Give a Name to your Smart Contract
 2. Give it a Description
 3. Give it the name you want to appear on the Blockchain
-4. Give it the symbol (for example, BTC is the symbol of Bitcoin)
+4. Give it the symbol (for example, ETH is the symbol of Ethereum)
 5. Then, the Base URI token is the type of storage you want to give, here as I told you before, we will use IPFS, so, write `ipfs://ipfs/` in the text field
-6. In the Initial Contract URI, put the CID of the picture you uploaded on IPFS
+6. In the Initial Contract URI, put the CID of the **metadata** you uploaded on IPFS
 7. And finally, set the Initial owner with the address of the wallet your just created
 
 Next step, choose the network and the wallet :
