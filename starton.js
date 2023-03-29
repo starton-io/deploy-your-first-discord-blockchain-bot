@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.post(
-    "/v3/smart-contract/polygon-mumbai/0x281B6De8E5573a0E8438602f53D32Cde4D0026e7/call",
+    "/v3/smart-contract/polygon-mumbai/CONTRACT_ADDRESS/call",
     {
         functionName: "mint(address,string)",
         params: [
