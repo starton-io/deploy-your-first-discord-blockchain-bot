@@ -5,7 +5,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const BOT_TOKEN = process.env.BOT_TOKEN
-console.log(BOT_TOKEN)
+console.log('BOT_TOKEN: ', BOT_TOKEN)
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
@@ -28,7 +28,7 @@ for (const folder of commandFolders) {
 }
 
 client.once(Events.ClientReady, () => {
-    console.log('Ready!');
+    console.log('Starton x Epitech Bot ready !');
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -50,4 +50,4 @@ client.on(Events.InteractionCreate, async interaction => {
     }
 });
 
-client.login(BOT_TOKEN);
+client.login(BOT_TOKEN).then(() => { console.log('Starton x Epitech Bot successfully started !') });
