@@ -53,19 +53,23 @@ Hint : https://discordjs.guide/preparations/setting-up-a-bot-application.html#cr
 ### Step 1 - Initialization
 
 Now that you cloned the repository, you need to initialize it.
-For this, we will use [NodeJS](https://nodejs.org/en) with [Yarn](https://yarnpkg.com/) as package manager.
+For this, we will use [NodeJS](https://nodejs.org/en) with [NPM](https://www.npmjs.com/) as package manager.
 
 ```bash
-yarn init
+npm init
 ```
 
 Some packages are also required to use the Discord API and to send HTTP requests, you need to install them.
 ```bash
-yarn add axios discord.js dotenv
+npm install axios discord.js dotenv
+
+## if you have any problem with the installation, try the following command :
+sudo npm install axios discord.js dotenv
 ```
 **[axios](https://axios-http.com/fr/docs/intro)** is used to send request to any API</br>
 **[discord.js](https://discord.js.org/#/docs/discord.js/main/general/welcome)** is used to use the Discord API</br>
 **[dotenv](https://www.npmjs.com/package/dotenv)** is used to store environment variable securely</br>
+
 
 You will then need to create two files :
 - The first one called `starton.js`
@@ -78,15 +82,21 @@ STARTON_API_KEY=
 
 ## Put your Discord Bot Token on the following line
 BOT_TOKEN=
+APPLICATION_ID=
+GUILD_ID=
 ```
 Rename it as `.env` and store in the file :
 - Your Starton API key in the field `STARTON_API_KEY`
 - Your Discord Bot token in the field `BOT_TOKEN`
+- Your Discord Bot application ID in the field `APPLICATION_ID`
+- Your Discord server ID in the field `GUILD_ID`
+
+Hint 1 : https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID-#:~:text=The%20Application%20ID%2C%20also%20known,the%20game%20in%20your%20Library
 
 You can then configure dotenv in both files and display the right environment variables to see if they are imported as expected.
 
-Hint 1 : https://www.npmjs.com/package/dotenv </br>
-Hint 2 : https://developer.mozilla.org/fr/docs/Web/API/console/log
+Hint 2 : https://www.npmjs.com/package/dotenv (2nd code snippet of the Usage part)</br>
+Hint 3 : https://developer.mozilla.org/fr/docs/Web/API/console/log
 
 You can run your scripts with :
 ```bash
@@ -146,7 +156,11 @@ We will use the Starton Dashboard for this step too. :wink:
 You will here deploy your first smart-contract. The smart-contract will allow you to create your NFT collection thanks to the cryptocurrency you own on our wallet.
 
 
+<<<<<<< HEAD
 Obviously, you will need to create a Wallet on the Starton's KMS in the appropriate section ("Wallet" section).</br>
+=======
+Obviously, you will need to create a Wallet on the Starton's KMS in the appropriate section ("Wallet" section).</br> 
+>>>>>>> 83d0dc53914c4c512334662b63f47caeb5041b68
 Then, let's deploy a Smart Contract in the eponym section.
 
 Select `Deploy with template` > `ERC721 NFT Smart Contract`.
@@ -198,7 +212,7 @@ First NFT deployed : CHECK
 
 It's time to automate it... with the Starton API.
 
-Setup your `starton.js` file with axios, and try to find a way to mint directly with your script (look at the hints they are useful).
+Set up your `starton.js` file with axios, and try to find a way to mint directly with your script (look at the hints they are useful).
 
 You can run your script with :
 ```bash
@@ -214,21 +228,63 @@ Okay good, you can mint lots and lots of NFTs on every wallet you want.
 
 Let's take a look on the Discord side.
 
-First, setup your Discord Bot instance.
+First, set up your Discord Bot instance.
 
-Hint 1 : https://discordjs.guide/creating-your-bot/main-file.html#running-your-application
+Hint 1 : https://discordjs.guide/creating-your-bot/main-file.html
+
+You can run your script with :
+```bash
+node discord.js
+```
+
+Congrats ! Your bot is running and is connected to Discord. Now, let's create commands.
+
+Add the following code in your `discord.js` file after your client initialization:
+```js
+const { Collection } = require('discord.js')
+
+client.commands = new Collection();
+const foldersPath = path.join(__dirname, 'commands');
+const commandFolders = fs.readdirSync(foldersPath);
+
+for (const folder of commandFolders) {
+    const commandsPath = path.join(foldersPath, folder);
+    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+    for (const file of commandFiles) {
+        const filePath = path.join(commandsPath, file);
+        const command = require(filePath);
+        if ('data' in command && 'execute' in command) {
+            client.commands.set(command.data.name, command);
+        } else {
+            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+        }
+    }
+}
+```
 
 We want that when executing the following command in the chat, the Bot reply `Hello World !` :
 ```bash
 /airdrop
 ```
 
-Hint 2 : https://discordjs.guide/creating-your-bot/slash-commands.html#before-you-continue
+You will write the behavior of your commands in the `airdrop.js` file.
+Yan find it here :
+```
+commands/
+   |___starton/
+          |___airdrop.js
+```
 
 You can run your script with :
 ```bash
 node discord.js
+# and then (in another terminal)
+node deploy-commands.js
 ```
+
+**IMPORTANT : The `deploy-commands.js` script allow you to reload the commands of your code and to make them accessible to the users.**
+
+Hint 2 : https://discordjs.guide/creating-your-bot/slash-commands.html
 
 ### Step 6 - Get Discord command content
 
@@ -241,14 +297,16 @@ Here is a desired example :
 /airdrop 0xA76ed24122193CF53f81F6dBEbE2a1DfF8f9e902
 ```
 
-**DISCLAIMER :** This is a good way to test but it's not secure for production project. Metamask is a better way to do this but we won't use it now.
+**DISCLAIMER :** This is a good way to test, but it's not secure for production project. Metamask is a better way to do this but we won't use it now.
 
 You can run your script with :
 ```bash
 node discord.js
+# and then (in another terminal)
+node deploy-commands.js
 ```
 
-Hint : the word `data`
+Hint : https://discordjs.guide/slash-commands/parsing-options.html#command-options
 
 ### Step 7 - Link both and have fun
 
@@ -261,6 +319,8 @@ And voilà ! All is working !
 You should run the following final command :
 ```bash
 node discord.js
+# and then (in another terminal)
+node deploy-commands.js
 ```
 
 ### Step ∞ - The only limit is your imagination
