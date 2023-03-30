@@ -12,19 +12,15 @@ const axiosInstance = axios.create({
     },
 })
 
-module.exports = async function mintNft(wallet) {
-    axiosInstance.post(
-        "/v3/smart-contract/polygon-mumbai/CONTRACT_ADDRESS/call",
-        {
-            functionName: "mint(address,string)",
-            params: [
-                wallet,
-                "YOUR METADATA CID"
-            ],
-            signerWallet: "DEFAULT STARTON WALLET",
-            speed: "average"
-        }
-    ).then((response) => {
+axiosInstance.post("/v3/smart-contract/polygon-mumbai/CONTRACT_ADDRESS/call",
+    {
+        functionName: "mint(address,string)",
+        params: [
+            "YOUR WALLET",
+            "YOUR METADATA CID"
+        ],
+        signerWallet: "DEFAULT STARTON WALLET",
+        speed: "average"
+    }).then((response) => {
         console.log(response.data)
     })
-}

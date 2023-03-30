@@ -65,7 +65,6 @@ npm install axios discord.js dotenv
 
 ## if you have any problem with the installation, try the following command :
 sudo npm install axios discord.js dotenv
-
 ```
 **[axios](https://axios-http.com/fr/docs/intro)** is used to send request to any API</br>
 **[discord.js](https://discord.js.org/#/docs/discord.js/main/general/welcome)** is used to use the Discord API</br>
@@ -92,10 +91,12 @@ Rename it as `.env` and store in the file :
 - Your Discord Bot application ID in the field `APPLICATION_ID`
 - Your Discord server ID in the field `GUILD_ID`
 
+Hint 1 : https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID-#:~:text=The%20Application%20ID%2C%20also%20known,the%20game%20in%20your%20Library
+
 You can then configure dotenv in both files and display the right environment variables to see if they are imported as expected.
 
-Hint 1 : https://www.npmjs.com/package/dotenv (2nd code snippet of the Usage part)</br>
-Hint 2 : https://developer.mozilla.org/fr/docs/Web/API/console/log
+Hint 2 : https://www.npmjs.com/package/dotenv (2nd code snippet of the Usage part)</br>
+Hint 3 : https://developer.mozilla.org/fr/docs/Web/API/console/log
 
 You can run your scripts with :
 ```bash
