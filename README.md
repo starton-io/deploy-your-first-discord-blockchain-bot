@@ -1,12 +1,12 @@
 <p>
-  <a target="https://starton.io"><img src="assets/starton-banner.jpg" alt="Starton Logo" /></a>
+  <a target="https://starton.com"><img src="assets/starton-banner.jpg" alt="Starton Logo" /></a>
 </p>
 
 # Deploy your first blockchain bot using Starton
 
 ## Introduction
 
-This repo is related to an [Epitech](https://www.epitech.eu/) workshop led by [Starton](https://starton.io).</br>
+This repo is related to an [Epitech](https://www.epitech.eu/) workshop led by [Starton](https://starton.com).</br>
 This workshop will allow you to build your first (or not) Discord bot connected to the blockchain using Starton (it's very easy you'll see).</br>
 During the 2 following hours, you'll develop a Discord bot in NodeJS thanks to what you can airdrop NFTs to the users of your Discord server.</br>
 
@@ -37,11 +37,11 @@ git clone git@github.com:starton-io/deploy-your-first-discord-blockchain-bot.git
 
 To interact with the blockchain, you'll use the Starton API, so you'll need to create an account.
 
-Go on [app.starton.io](https://app.starton.io) and create your account (with your Epitech email address, maybe some gifts will be drop :eyes:).
+Go on [app.starton.com](https://app.starton.com) and create your account (with your Epitech email address, maybe some gifts will be drop :eyes:).
 
 Generate an API key that will be useful to use our API.
 
-Hint : https://docs.starton.io/docs/getting-started
+Hint : https://docs.starton.com/docs/getting-started
 
 #### Register on Discord Developer Portal
 
@@ -145,7 +145,7 @@ This will be the metadata of your NFT, in other words, all the information relat
 
 **It's this CID that we will put in NFT parameter.**
 
-Hint : https://docs.starton.io/docs/IPFS/uploading-json
+Hint : https://docs.starton.com/docs/IPFS/uploading-json
 
 ### Step 3 - Deploy your first Smart-Contract
 
@@ -181,8 +181,8 @@ And... **DEPLOY** !
 
 Here you are, you successfully deployed a NFT smart-contract... but you don't have NFT yet... Let's fix this !
 
-Hint 1 : https://docs.starton.io/docs/Tutorials/deploy-Nfts-with-Binance </br>
-Hint 2 : https://docs.starton.io/docs/Smart-contract/ERC721-Meta
+Hint 1 : https://docs.starton.com/docs/Tutorials/deploy-Nfts-with-Binance </br>
+Hint 2 : https://docs.starton.com/docs/Smart-contract/ERC721-Meta
 
 ### Step 4 - Mint NFT
 
@@ -219,7 +219,7 @@ You can run your script with :
 node starton.js
 ```
 
-Hint 1 : https://docs.starton.io/docs/Developer/Discovering-coding-interface#code </br>
+Hint 1 : https://docs.starton.com/docs/Developer/Discovering-coding-interface#code </br>
 Hint 2 (less interesting) : https://reflectoring.io/tutorial-guide-axios/
 
 ### Step 5 - Detect Discord command
@@ -329,9 +329,9 @@ Now that you finished the workshop, be free to continue to use Starton, to devel
 
 ## Documentation
 
-You can access to the Starton Documentation here : [Starton Documentation](https://docs.starton.io)</br>
+You can access to the Starton Documentation here : [Starton Documentation](https://docs.starton.com)</br>
 If you need test faucet, you can get some on the official Polygon Faucet : [Polygon Mumbai Faucet](https://faucet.polygon.technology/)
 
 ## Authors
 
-**Tibo Pendino** - _Backend Developer @starton.io_ ([GitHub](https://github.com/tibo-pdn), [LinkedIn](https://www.linkedin.com/in/tibo-pendino/))
+**Tibo Pendino** - _Backend Developer @starton.com_ ([GitHub](https://github.com/tibo-pdn), [LinkedIn](https://www.linkedin.com/in/tibo-pendino/))
